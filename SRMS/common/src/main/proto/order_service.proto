@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package srms;
+
+import "message_types.proto";
+
+service OrderService {
+  rpc GetOrderHistory(UserRequest) returns (OrderList);
+  rpc ProcessReturns(stream ReturnRequest) returns (ReturnResponse);
+}

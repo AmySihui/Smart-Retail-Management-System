@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package srms;
+
+import "message_types.proto";
+
+service InventoryService {
+  rpc GetStockInfo(ProductRequest) returns (StockResponse);
+  rpc StreamStockUpdates(ProductRequest) returns (stream StockResponse);
+  rpc RestoreStock(ReturnRequest) returns (StockUpdateResponse);
+}

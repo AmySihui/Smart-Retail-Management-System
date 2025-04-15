@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package srms;
+
+message ProductRequest {
+  string productId = 1;
+}
+
+message StockResponse {
+  int32 stock = 1;
+  string productId = 2;
+}
+
+message ReturnRequest {
+  string orderId = 1;
+  string productId = 2;
+}
+
+message StockUpdateResponse {
+  bool success = 1;
+}
+
+message SaleRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message SaleResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UserRequest {
+  string userId = 1;
+}
+
+message OrderList {
+  repeated string orders = 1;
+}
+
+message ReturnResponse {
+  bool success = 1;
+  string message = 2;
+}

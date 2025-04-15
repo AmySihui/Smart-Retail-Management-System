@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package srms;
+
+import "message_types.proto";
+
+service SalesService {
+  rpc ProcessSale(SaleRequest) returns (SaleResponse);
+  rpc StreamSalesData(stream SaleRequest) returns (stream SaleResponse);
+}
