@@ -14,12 +14,14 @@
     <module>order-service</module>
     <module>inventory-service</module>
     <module>common</module>
+    <module>web-gui</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <grpc.version>1.64.0</grpc.version>
     <protobuf.version>3.25.3</protobuf.version>
+    <spring.boot.version>3.2.2</spring.boot.version>
   </properties>
 
   <dependencyManagement>
@@ -46,7 +48,37 @@
         <artifactId>grpc-stub</artifactId>
         <version>${grpc.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.11.5</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>3.4.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
     </dependencies>
+
+
   </dependencyManagement>
 
   <dependencies>
@@ -57,4 +89,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
 </project>
