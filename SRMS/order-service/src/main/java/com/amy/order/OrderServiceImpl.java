@@ -68,4 +68,18 @@ public class OrderServiceImpl implements OrderServiceGrpc.AsyncService {
         };
     }
 
+    @Override
+    public void getOrderHistory(UserRequest request, StreamObserver<OrderList> responseObserver) {
+        logger.info("receive order：" + request.getUserId());
+
+        OrderList orderList = OrderList.newBuilder()
+                .addOrders("order 001")
+                .addOrders("order 002")
+                .build();
+
+        responseObserver.onNext(orderList);
+        responseObserver.onCompleted();
+    }
+
+
 }

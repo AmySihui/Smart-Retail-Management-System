@@ -14,7 +14,7 @@ import srms.MessageTypes.StockResponse;
 public class InventoryController {
 
     @GetMapping("/inventory")
-    public String getStock(@RequestParam String productId) {
+    public String getStock(@RequestParam("productId") String productId) {
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()

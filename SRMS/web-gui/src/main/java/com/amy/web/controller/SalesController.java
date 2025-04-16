@@ -13,7 +13,7 @@ import srms.SalesServiceGrpc;
 public class SalesController {
 
     @PostMapping("/sale")
-    public String processSale(@RequestParam String productId, @RequestParam int quantity) {
+    public String processSale(@RequestParam("productId") String productId, @RequestParam("quantity") int quantity) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9091)
                 .usePlaintext()
                 .intercept(new AuthClientInterceptor(JWTUtil.generateToken("web-user")))

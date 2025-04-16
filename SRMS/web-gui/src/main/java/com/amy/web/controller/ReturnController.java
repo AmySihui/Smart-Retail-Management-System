@@ -13,7 +13,7 @@ import srms.OrderServiceGrpc;
 public class ReturnController {
 
     @GetMapping("/return-orders")
-    public String getReturnOrders(@RequestParam String userId) {
+    public String getReturnOrders(@RequestParam("userId") String userId) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9092)
                 .usePlaintext()
                 .intercept(new AuthClientInterceptor(JWTUtil.generateToken("web-user")))
