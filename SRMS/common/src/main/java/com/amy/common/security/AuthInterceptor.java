@@ -16,7 +16,7 @@ public class AuthInterceptor implements ServerInterceptor {
         String authHeader = headers.get(AUTH_HEADER);
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            call.close(Status.PERMISSION_DENIED.withDescription("缺少 Authorization 头"), headers);
+            call.close(Status.PERMISSION_DENIED.withDescription("less Authorization head"), headers);
             return new ServerCall.Listener<>() {};
         }
 
@@ -25,13 +25,12 @@ public class AuthInterceptor implements ServerInterceptor {
         try {
             String userId = JWTUtil.validateToken(token);
 
-            // 添加到 gRPC 上下文，后续业务中可通过 Context 获取
             Context contextWithUser = Context.current().withValue(Context.key("userId"), userId);
 
             return Contexts.interceptCall(contextWithUser, call, headers, next);
 
         } catch (Exception e) {
-            call.close(Status.PERMISSION_DENIED.withDescription("无效或过期的 JWT").withCause(e), headers);
+            call.close(Status.PERMISSION_DENIED.withDescription("error JWT").withCause(e), headers);
             return new ServerCall.Listener<>() {};
         }
     }
